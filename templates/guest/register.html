@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+    <div class="form-container">
+        <h1>Register</h1><br>
+        <form method="post" action="/register">
+            <!-- CSRF Protection -->
+            {{ form.csrf_token }}
+
+            <!-- Username input -->
+            <div class="form-outline mb-4">
+                {{ form.username(class="form-control", id="username") }}
+                {{ form.username.label(class="form-label", for="username") }}
+            </div>
+
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                {{ form.email(class="form-control", id="email") }}
+                {{ form.email.label(class="form-label", for="email") }}
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                {{ form.password(class="form-control", id="password",
+                spellcheck="false",autocomplete="new-password", autocorrect="off") }}
+                {{ form.password.label(class="form-label", for="password") }}
+            </div>
+
+            <!-- Pass confirmation input -->
+            <div class="form-outline mb-4">
+                {{ form.confirm_password(class="form-control", id="confirm_password",
+                spellcheck="false",autocomplete="new-password", autocorrect="off") }}
+                {{ form.confirm_password.label(class="form-label", for="confirm_password") }}
+            </div>
+
+            <!-- Form validation err message -->
+            {% for field in form.errors %}
+                {% for error in form.errors[field] %}
+                    <div class="alert alert-danger" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{ error }}
+
+                    </div>
+
+                {% endfor %}
+            {% endfor %}
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
+
+            <!-- Register buttons -->
+            <div class="text-center">
+                <p>Already a member? <a href="/">Login</a></p>
+            </div>
+        </form>
+    </div>
+{% endblock %}

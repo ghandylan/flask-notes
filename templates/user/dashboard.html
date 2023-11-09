@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+    <p>hello, <b>{{ current_user.username }}</b></p>
+    <p>your email is <b>{{ current_user.email }}</b></p>
+    <p>role: <b>{{ current_user.role }}</b></p>
+    <p><a id="logoutBtn">Logout</a></p>
+{% endblock %}

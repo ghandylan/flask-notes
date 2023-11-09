@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+    <div class="form-container">
+        <h1>Login</h1><br>
+        <form method="post" action="/login">
+            <!-- CSRF Protection -->
+            {{ form.csrf_token }}
+
+            <!-- Username input -->
+            <div class="form-outline mb-4">
+                {{ form.username(class="form-control", id="username", autofill="username") }}
+                {{ form.username.label(class="form-label", for="username") }}
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                {{ form.password(class="form-control", id="password") }}
+                {{ form.password.label(class="form-label", for="password") }}
+            </div>
+
+            <!-- Form validation err message -->
+            {% if form.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ form.errors }}
+                </div>
+            {% endif %}
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+            <!-- Register buttons -->
+            <div class="text-center">
+                <p>Not a member? <a href="/register">Register</a></p>
+            </div>
+        </form>
+    </div>
+{% endblock %}
