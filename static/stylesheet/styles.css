@@ -22,9 +22,8 @@
     resize: none;
 }
 
-
 @media (max-width: 767px) {
-    .form-container {
+    .form-container, .addnote-form-container {
         max-width: 100%;
         margin: 10% auto;
     }

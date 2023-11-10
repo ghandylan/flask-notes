@@ -6,7 +6,7 @@
         <div class="card" style="width: auto;">
             <div class="card-body">
                 <h5 class="card-title">{{ note.title }}</h5>
-                <p class="card-text">{{ note.content }}</p>
+                <p class="card-text">{{ note.content|replace('\n', '<br>')|safe }}</p>
                 <a href="{{ url_for('user_views.edit_note', note_id=note.note_id) }}">Edit</a>
                 <a href="{{ url_for('user_views.delete_note', note_id=note.note_id) }}">Delete</a>
             </div>
