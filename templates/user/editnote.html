@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Edit Note{% endblock %}
+{% block content %}
+    <div class="addnote-form-container">
+        <form method="post" action="/edit-note/{{ note.note_id }}">
+            <h2>Edit note</h2>
+            <!-- CSRF Protection -->
+            {{ form.csrf_token }}
+
+            <!-- Title update input-->
+            <div class="form-group">
+                {{ form.edit_title.label(class="form-label", for="editnote-title") }}
+                {{ form.edit_title(class="form-control", id="editnote-title", value=note.title) }}
+            </div>
+
+            <!-- Content update input-->
+            <div class="form-group">
+                {{ form.edit_content.label(class="form-label", for="editnote-content") }}
+                {{ form.edit_content(class="form-control", id="editnote-content") }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script>
+        document.querySelector('#editnote-content').value = '{{note.content}}'
+    </script>
+{% endblock %}

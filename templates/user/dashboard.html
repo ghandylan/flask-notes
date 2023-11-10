@@ -1,7 +1,16 @@
 {% extends "base.html" %}
 {% block title %}Dashboard{% endblock %}
 {% block content %}
-    <p>hello, <b>{{ current_user.username }}</b></p>
-    <p>your email is <b>{{ current_user.email }}</b></p>
-    <p>role: <b>{{ current_user.role }}</b></p>
+    <a href="{{ url_for('user_views.add_note') }}">Add Note</a>
+    {% for note in notes %}
+        <div class="card" style="width: auto;">
+            <div class="card-body">
+                <h5 class="card-title">{{ note.title }}</h5>
+                <p class="card-text">{{ note.content }}</p>
+                <a href="{{ url_for('user_views.edit_note', note_id=note.note_id) }}">Edit</a>
+                <a href="{{ url_for('user_views.delete_note', note_id=note.note_id) }}">Delete</a>
+            </div>
+        </div>
+    {% endfor %}
+
 {% endblock %}

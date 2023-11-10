@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Add Note{% endblock %}
+{% block content %}
+    <div class="addnote-form-container">
+        <form method="post" action="/add-note">
+            <h2>Add note</h2>
+            <!-- CSRF Protection -->
+            {{ form.csrf_token }}
+
+            <!-- Title input-->
+            <div class="form-group">
+                {{ form.title.label(class="form-label", for="addnote-title") }}
+                {{ form.title(class="form-control", id="addnote-title", placeholder="Enter title") }}
+            </div>
+
+            <!-- Content input-->
+            <div class="form-group">
+                {{ form.content.label(class="form-label", for="addnote-content") }}
+                {{ form.content(class="form-control", id="addnote-content", placeholder="Enter content") }}
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+{% endblock %}

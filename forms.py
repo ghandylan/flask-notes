@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, EmailField, validators
-from wtforms.validators import DataRequired, Length, EqualTo, Regexp
+from wtforms import StringField, PasswordField, EmailField, validators, TextAreaField
+from wtforms.validators import DataRequired, Length, EqualTo
 
 
 class LoginForm(FlaskForm):
@@ -22,3 +22,13 @@ class RegisterForm(FlaskForm):
                                  EqualTo('confirm_password', message='Passwords must match')
                              ])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), Length(min=8)])
+
+
+class AddNoteForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired(), Length(min=1, max=255)])
+    content = TextAreaField('Content', validators=[DataRequired(), Length(min=1, max=10000)])
+
+
+class EditNoteForm(FlaskForm):
+    edit_title = StringField('Title', validators=[DataRequired(), Length(min=1, max=255)])
+    edit_content = TextAreaField('Content', validators=[DataRequired(), Length(min=1, max=10000)])

@@ -7,6 +7,21 @@
     margin: 5% auto 0;
 }
 
+.addnote-form-container {
+    max-width: 800px;
+    padding: 1em;
+    border: 1px solid #ccc;
+    border-radius: 1em;
+    background-color: #f2f2f2;
+    margin: 5% auto 0;
+}
+
+#addnote-content, #editnote-content {
+    width: 100%;
+    height: 300px;
+    resize: none;
+}
+
 
 @media (max-width: 767px) {
     .form-container {
