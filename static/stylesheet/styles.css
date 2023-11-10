@@ -4,16 +4,7 @@
     border: 1px solid #ccc;
     border-radius: 1em;
     background-color: #f2f2f2;
-    margin: 10% auto 0;
-}
-
-#logoutBtn {
-    text-decoration: underline;
-    color: blue; /* Change the color to your preference */
-}
-
-#logoutBtn:hover {
-    color: blue; /* Change the color when hovered to your preference */
+    margin: 5% auto 0;
 }
 
 

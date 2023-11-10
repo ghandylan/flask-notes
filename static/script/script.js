@@ -1,7 +1,5 @@
-document.getElementById('logoutBtn').addEventListener('click', function () {
-    const confirmLogout = confirm('Are you sure you want to log out?');
-    if (confirmLogout) {
+function logout() {
+    if (confirm('Are you sure you want to logout?')) {
         window.location.href = '/logout';
     }
-});
-
+}

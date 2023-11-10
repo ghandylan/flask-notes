@@ -20,6 +20,11 @@ def redir():
     return redirect(url_for('guest_views.login'))
 
 
+@guest_blueprint.route('/home')
+def home():
+    return render_template('guest/home.html')
+
+
 @guest_blueprint.route('/login', methods=['GET', 'POST'])
 def login():
     # if user is already logged in, redirect to dashboard
@@ -70,7 +75,7 @@ def register():
         else:
             # if user does not exist, create user and redirect to login page
             new_user = User(
-                id=str(uuid.uuid4()),
+                user_id=str(uuid.uuid4()),
                 username=form.username.data,
                 email=form.email.data,
                 password=bcrypt.hashpw(form.password.data.encode('utf-8'), bcrypt.gensalt()),

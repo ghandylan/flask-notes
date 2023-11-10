@@ -14,6 +14,31 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Flask Notes</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav ml-auto right">
+            {% if current_user.is_authenticated %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" onclick="logout()">Logout</a>
+                </li>
+            {% else %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('guest_views.login') }}">Login</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('guest_views.register') }}">Register</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
 <!-- Error Message -->
 {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
@@ -43,6 +68,9 @@
         {% endfor %}
     {% endif %}
 {% endwith %}
+
+
+
 <!-- Page Content -->
 {% block content %}{% endblock %}
 
