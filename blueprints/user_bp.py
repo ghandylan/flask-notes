@@ -1,4 +1,5 @@
 import uuid
+from datetime import datetime
 
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
@@ -28,6 +29,7 @@ def add_note():
             note_id=str(uuid.uuid4()),
             title=form.title.data,
             content=form.content.data,
+            date_created=datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
             user_id=current_user.user_id
         )
 
@@ -47,7 +49,8 @@ def edit_note(note_id):
     note = Note.query.filter_by(note_id=note_id).first()
     if request.method == 'POST' and form.validate_on_submit():
         note.title = form.edit_title.data
-        note.content = form.edit_content.data
+        note.content = form.edit_content.data,
+        note.date_created = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
         db.session.commit()
         flash("Note updated.", category='success')
         return redirect(url_for('user_views.dashboard', username=current_user.username))

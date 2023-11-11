@@ -23,5 +23,6 @@ class Note(db.Model):
     note_id = db.Column(db.String(36), primary_key=True)
     title = db.Column(db.String(255), nullable=False)
     content = db.Column(db.Text)
+    date_created = db.Column(db.DateTime)
     user_id = db.Column(db.String(36), db.ForeignKey('users.user_id'))
     user = db.relationship('User', backref=db.backref('notes', lazy=True))
