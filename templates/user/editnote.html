@@ -18,7 +18,9 @@
                 {{ form.edit_content.label(class="form-label", for="editnote-content") }}
                 {{ form.edit_content(class="form-control", id="editnote-content") }}
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Edit note</button>
+            <a class="btn btn-primary" href="{{ url_for('user_views.dashboard', username=current_user.username) }}"
+               role="button">Cancel</a>
         </form>
     </div>
     <script>
