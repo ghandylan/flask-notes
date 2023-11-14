@@ -1,5 +1,11 @@
 body {
-    overflow: hidden;
+
+}
+
+/********** Navigation bar color ***********/
+#main-nav {
+    /* also change `#add-note-button` to match accent */
+    background-color: #919b93
 }
 
 .form-container {
@@ -29,12 +35,28 @@ body {
     color: #919b93;
 }
 
-#edit-note-button, #delete-note-button {
+#add-note-button:hover {
+    color: #1db709;
+}
+
+#edit-note-button, #delete-note-button, #favorite-note-button {
     color: #919b93;
 }
 
-#add-note-button:hover, #edit-note-button:hover, #delete-note-button:hover {
+#edit-note-button:hover {
+    color: #e3cb22;
+}
+
+#delete-note-button:hover {
     color: #000;
+}
+
+#favorite-note-button:hover, #remove-favorite-note-button {
+    color: #c41b1b;
+}
+
+#remove-favorite-note-button:hover {
+    color: #d24545;
 }
 
 #notes-container {
@@ -42,7 +64,6 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     max-width: 100%;
-    /*max-height: 100px;*/
     overflow-y: auto;
     max-height: 90vh;
 }
@@ -66,6 +87,7 @@ body {
     resize: none;
 }
 
+/********** Responsive Media Queries ***********/
 @media (max-width: 767px) {
     .form-container, .addnote-form-container {
         max-width: 100%;
