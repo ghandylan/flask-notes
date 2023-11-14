@@ -7,11 +7,12 @@
                 <div class="card-body">
                     <h4 class="card-title">{{ note.title }}</h4>
                     <p class="card-text">{{ note.content|replace('\n', '<br>')|safe }}</p>
-                    <small class="card-text">{{ note.date_created }}</small><br><br>
+                    <small class="card-text">Created at {{ note.date_created }}</small><br><br>
                     <a id="edit-note-button" href="{{ url_for('user_views.edit_note', note_id=note.note_id) }}">
                         <i class="fa fa-pencil-square-o fa-2x"></i>
                     </a>
-                    <a id="delete-note-button" href="{{ url_for('user_views.delete_note', note_id=note.note_id) }}">
+                    <a id="delete-note-button" href="{{ url_for('user_views.delete_note', note_id=note.note_id) }}"
+                       onclick="return deleteNote()">
                         <i class="fa fa-trash-o fa-2x"></i>
                     </a>
                 </div>

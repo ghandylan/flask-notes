@@ -16,6 +16,13 @@ user_blueprint = Blueprint('user_views', __name__, template_folder='templates')
 @role_required('user')
 def dashboard(username):
     notes = Note.query.filter_by(user_id=current_user.user_id).all()
+    # capture note date_created and format it, separate date and time
+    # convert date_created to string
+    for note in notes:
+        note.date_created = note.date_created.strftime("%Y/%m/%d %H:%M:%S")
+        note.date_created = note.date_created.split(' ')
+        note.date_created[0] = datetime.strptime(note.date_created[0], "%Y/%m/%d").strftime("%B %d, %Y")
+        note.date_created = ' '.join(note.date_created)
     return render_template('user/dashboard.html', notes=notes)
 
 
