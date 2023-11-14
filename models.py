@@ -24,5 +24,6 @@ class Note(db.Model):
     title = db.Column(db.String(255), nullable=False)
     content = db.Column(db.Text)
     date_created = db.Column(db.DateTime)
+    favorite = db.Column(db.Boolean, default=False)
     user_id = db.Column(db.String(36), db.ForeignKey('users.user_id'))
     user = db.relationship('User', backref=db.backref('notes', lazy=True))
