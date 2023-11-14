@@ -16,14 +16,14 @@ user_blueprint = Blueprint('user_views', __name__, template_folder='templates')
 @role_required('user')
 def dashboard(username):
     notes = Note.query.filter_by(user_id=current_user.user_id).all()
-    # capture note date_created and format it, separate date and time
-    # convert date_created to string
+    fave_notes = Note.query.filter_by(user_id=current_user.user_id, favorite=True).all()
     for note in notes:
         note.date_created = note.date_created.strftime("%Y/%m/%d %H:%M:%S")
         note.date_created = note.date_created.split(' ')
         note.date_created[0] = datetime.strptime(note.date_created[0], "%Y/%m/%d").strftime("%B %d, %Y")
         note.date_created = ' '.join(note.date_created)
-    return render_template('user/dashboard.html', notes=notes)
+
+    return render_template('user/dashboard.html', notes=notes, fave_notes=fave_notes)
 
 
 @user_blueprint.route('/add-note', methods=['GET', 'POST'])
@@ -42,7 +42,7 @@ def add_note():
 
         db.session.add(new_note)
         db.session.commit()
-        flash("Note added.", category='success')
+        flash("Note added ✅", category='success')
         return redirect(url_for('user_views.dashboard', username=current_user.username))
 
     return render_template('user/addnote.html', form=form)
@@ -59,7 +59,7 @@ def edit_note(note_id):
         note.content = form.edit_content.data,
         note.date_created = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
         db.session.commit()
-        flash("Note updated.", category='success')
+        flash("Note updated 👍", category='success')
         return redirect(url_for('user_views.dashboard', username=current_user.username))
     return render_template('user/editnote.html', form=form, note=note)
 
@@ -71,5 +71,21 @@ def delete_note(note_id):
     note = Note.query.filter_by(note_id=note_id).first()
     db.session.delete(note)
     db.session.commit()
-    flash("Note deleted.", category='success')
+    flash("Note deleted 🗑️", category='success')
+    return redirect(url_for('user_views.dashboard', username=current_user.username))
+
+
+@user_blueprint.route('/favorite-note/<note_id>', methods=['GET', 'POST'])
+@login_required
+@role_required('user')
+def favorite_note(note_id):
+    note = Note.query.filter_by(note_id=note_id).first()
+    if note.favorite:
+        note.favorite = False
+        flash("Removed from favorites 💔", category='success')
+    else:
+        note.favorite = True
+        flash("Saved to favorites 💖", category='success')
+
+    db.session.commit()
     return redirect(url_for('user_views.dashboard', username=current_user.username))
