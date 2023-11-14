@@ -1,5 +1,5 @@
 body {
-
+    overflow-x: hidden;
 }
 
 /********** Navigation bar color ***********/
@@ -27,7 +27,7 @@ body {
 }
 
 #add-note-button {
-    position: absolute;
+    position: fixed;
     bottom: 3%;
     right: 3%;
     margin: 0;
@@ -64,12 +64,11 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     max-width: 100%;
-    overflow-y: auto;
     max-height: 90vh;
 }
 
 #note-card {
-    flex: 1 0 calc(47.8%);
+    flex: 2 0 calc(47.8%);
     max-width: calc(47.8%);
     box-sizing: border-box;
     border-radius: 30px;
