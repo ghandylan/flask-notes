@@ -26,6 +26,13 @@ body {
     margin: 5% auto 0;
 }
 
+.dashboard_title {
+    text-align: center;
+    font-size: 2em;
+    margin: 0;
+    padding: 0.5em 0 0;
+}
+
 #add-note-button {
     position: fixed;
     bottom: 3%;
