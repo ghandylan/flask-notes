@@ -1,6 +1,6 @@
-# Flask Starter Template
+# Flasknotes
 
-### This is a starter template for Flask projects.
+#### Flasknotes is a simple web-based note taking application built with Flask and MySQL. It features role based authentication, CRUD operations, and favorite notes. It is fully mobile responsive and can be used on any device with an active internet connection
 
 ##### It includes the following features:
 
@@ -10,8 +10,22 @@
 + .env file support with __python-dotenv__
 + Powerful template engine __Jinja2__
 + Database migration support with __Flask-Migrate__
-+ Password hashing with __bcrypt__
++ Password hashing and checking with __bcrypt__
 + __Flask-WTF__ forms with CSRF protection
+
+## Screenshots:
+
+### Dashboard with CRUD operations and favorite notes
+
+![alt text for screen readers](readme_pics/Screenshot%20(75).png "Dashboard")
+
+### Register Page
+
+![alt text for screen readers](readme_pics/Screenshot%20(74).png "Register")
+
+### Login Page
+
+![alt text for screen readers](readme_pics/Screenshot%20(73).png "Login")
 
 ##### Pre-requisites:
 
@@ -19,12 +33,13 @@
 + MySQL 5.7 or above
 + IDE of your choice
 
-##### To use this template:
+##### To run this app on your machine:
 
-1. Clone this repository using git clone ```git clone https://github.com/ghandylan/flask-template```
+1. Clone this repository using git clone ```git clone https://github.com/ghandylan/flask-notes```
 2. Unzip the folder and open it in your favorite IDE like PyCharm, VSCode, etc.
-3. Open the terminal and create a virtual environment using ```python -m venv <env_name>```
-4. Activate the virtual environment using ```<env_name>\Scripts\activate``` on Windows or ```source <env_name>/bin/activate``` on Linux/MacOS.
+3. Open the terminal and create a virtual environment using ```python -m venv flask_notes```
+4. Activate the virtual environment using ```<env_name>\Scripts\activate``` on Windows
+   or ```source flask_notes/bin/activate``` on Linux/MacOS.
 5. Run ```pip install -r requirements.txt``` to install all the dependencies.
 6. Create a .env file and add the following variables:
     + ```SECRET_KEY``` - A secret key for your application.
@@ -37,9 +52,10 @@
     + ```flask db migrate```
     + ```flask db upgrade```
 
-   Should you encounter any errors with database migrations, run ```flask db stamp head``` and then run the above excluding the ```flask db init``` command.
+   Should you encounter any errors with database migrations, run ```flask db stamp head``` and then run the above
+   excluding the ```flask db init``` command.
 
-   
+
 9. Run ```python app.py``` to start the server.
 
 ##### Files in the project:
