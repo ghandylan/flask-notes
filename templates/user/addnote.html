@@ -19,6 +19,8 @@
                 {{ form.content(class="form-control", id="addnote-content", placeholder="Enter content") }}
             </div>
             <button type="submit" class="btn btn-primary">Add</button>
+            <a class="btn btn-primary" href="{{ url_for('user_views.dashboard', username=current_user.username) }}"
+               role="button">Cancel</a>
         </form>
     </div>
 
