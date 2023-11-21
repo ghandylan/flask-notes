@@ -2,3 +2,4 @@
 *.pyc
 /migrations/
 /.idea/
+/readme_pics/
