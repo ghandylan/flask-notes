@@ -92,6 +92,45 @@ body {
     resize: none;
 }
 
+#home_page_title {
+    text-align: center;
+    margin-top: 3em;
+    padding-top: 2.5em;
+}
+
+#home_page_title h1 {
+    font-size: 5em;
+}
+
+#home_page_title h2 {
+    font-size: 2em;
+    margin: 0;
+    padding: 0.5em 0 0;
+}
+
+#home_page_buttons {
+    display: flex;
+    justify-content: center;
+    margin: 2em 1em 0;
+    gap: 1em;
+}
+
+#home_page_buttons a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 0.5em 1em;
+    border: 1px solid #919b93;
+    background-color: #919b93;
+    border-radius: 1em;
+    /* TODO: Fix buttons on mobile view */
+    width: 12.5%;
+}
+
+#home_page_buttons a:hover {
+    background-color: #b2b2b2;
+    color: #ffffff;
+}
+
 /********** Responsive Media Queries ***********/
 @media (max-width: 767px) {
     .form-container, .addnote-form-container {
