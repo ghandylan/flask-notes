@@ -17,7 +17,7 @@ def redirect_if_authenticated(username=None):
 
 @guest_blueprint.route('/')
 def redir():
-    return redirect(url_for('guest_views.login'))
+    return redirect(url_for('guest_views.home'))
 
 
 @guest_blueprint.route('/home')
