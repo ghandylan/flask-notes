@@ -20,10 +20,10 @@
             </div>
 
             <!-- Submit/Add note button -->
-            <button type="submit" class="btn btn-primary">Add</button>
+            <button title="Add note" type="submit" class="btn btn-primary">Add</button>
 
             <!-- Cancel button -->
-            <a class="btn btn-primary" href="{{ url_for('user_views.dashboard', username=current_user.username) }}"
+            <a title="Cancel" class="btn btn-primary" href="{{ url_for('user_views.dashboard', username=current_user.username) }}"
                role="button">Cancel</a>
         </form>
     </div>

@@ -40,14 +40,14 @@
         <ul class="navbar-nav ml-auto right">
             {% if current_user.is_authenticated %}
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" onclick="logout()">Logout</a>
+                    <a title="Logout" class="nav-link" href="#" onclick="logout()">Logout</a>
                 </li>
             {% else %}
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url_for('guest_views.login') }}">Login</a>
+                    <a title="Login" class="nav-link" href="{{ url_for('guest_views.login') }}">Login</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ url_for('guest_views.register') }}">Register</a>
+                    <a title="Register" class="nav-link" href="{{ url_for('guest_views.register') }}">Register</a>
                 </li>
             {% endif %}
         </ul>
