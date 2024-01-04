@@ -122,8 +122,7 @@ body {
     border: 1px solid #919b93;
     background-color: #919b93;
     border-radius: 1em;
-    /* TODO: Fix buttons on mobile view */
-    width: 12.5%;
+    width: auto;
 }
 
 #home_page_buttons a:hover {
