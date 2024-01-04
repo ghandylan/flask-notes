@@ -1,7 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <!-- Page title -->
     <title>{% block title %}{% endblock %}</title>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -56,6 +58,7 @@
 {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
         {% for category, message in messages %}
+            <!-- Success message (Green) -->
             {% if category == 'success' %}
                 <div class="alert alert-success" role="alert">
                     {{ message }}
@@ -63,6 +66,8 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+            
+            <!-- Warning message (Yellow) -->
             {% elif category == 'warning' %}
                 <div class="alert alert-warning" role="alert">
                     {{ message }}
@@ -70,6 +75,8 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+            
+            <!-- Error message (Red) -->
             {% elif category == 'error' %}
                 <div class="alert alert-danger" role="alert">
                     {{ message }}
