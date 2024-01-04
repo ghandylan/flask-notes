@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Dashboard{% endblock %}
 {% block content %}
+    <!-- FAVORITES section-->
     <h2 class="dashboard_title">Favorites</h2>
     <div id="notes-container">
         {% for fave_note in fave_notes %}
@@ -10,15 +11,20 @@
                     <p class="card-text">{{ fave_note.content|replace('\n', '<br>')|safe }}</p>
                     <small class="card-text">Created at {{ fave_note.date_created }}</small><br><br>
                     <div id="note-actions">
+                        <!-- EDIT note button -->
                         <a id="edit-note-button"
                            href="{{ url_for('user_views.edit_note', note_id=fave_note.note_id) }}">
                             <i class="fa fa-pencil-square fa-2x"></i>
                         </a>
+
+                        <!-- DELETE note button -->
                         <a id="delete-note-button"
                            href="{{ url_for('user_views.delete_note', note_id=fave_note.note_id) }}"
                            onclick="return deleteNote()">
                             <i class="fa fa-trash fa-2x"></i>
                         </a>
+
+                        <!-- FAVORITE/REMOVE FAVORITE note button -->
                         {% if fave_note.favorite == True %}
                             <a id="remove-favorite-note-button"
                                href="{{ url_for('user_views.favorite_note', note_id=fave_note.note_id) }}">
@@ -37,6 +43,7 @@
         {% endfor %}
     </div>
     <hr>
+    <!-- ALL NOTES section -->
     <h2 class="dashboard_title">My Notes</h2>
     <div id="notes-container">
     {% for note in notes %}
@@ -46,13 +53,18 @@
                 <p class="card-text">{{ note.content|replace('\n', '<br>')|safe }}</p>
                 <small class="card-text">Created at {{ note.date_created }}</small><br><br>
                 <div id="note-actions">
+                    <!-- EDIT note button -->
                     <a id="edit-note-button" href="{{ url_for('user_views.edit_note', note_id=note.note_id) }}">
                         <i class="fa fa-pencil-square fa-2x"></i>
                     </a>
+
+                    <!-- DELETE note button -->
                     <a id="delete-note-button" href="{{ url_for('user_views.delete_note', note_id=note.note_id) }}"
                        onclick="return deleteNote()">
                         <i class="fa fa-trash fa-2x"></i>
                     </a>
+
+                    <!-- FAVORITE/REMOVE FAVORITE note button -->
                     {% if note.favorite == True %}
                         <a id="remove-favorite-note-button"
                            href="{{ url_for('user_views.favorite_note', note_id=note.note_id) }}">
@@ -71,6 +83,7 @@
     {% endfor %}
     <div id="notes-container">
 
+    <!-- ADD note button -->
     <a id="add-note-button" href="{{ url_for('user_views.add_note') }}">
         <i class="fa fa-plus-circle fa-5x"></i>
     </a>
