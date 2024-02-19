@@ -37,20 +37,18 @@ def login():
     if request.method == 'POST' and form.validate_on_submit():
         # check if user exists
         user = User.query.filter_by(username=form.username.data).first()
-        if user:
-            # check if password matches
-            if bcrypt.checkpw(form.password.data.encode('utf-8'), user.password.encode('utf-8')):
-                login_user(user)
-                flash("Logged in", category='success')
-                return redirect(url_for('user_views.dashboard', username=user.username))
-            # if password does not match, flash error and redirect to login page
-            else:
-                flash("Incorrect Password", category='error')
-                return render_template('guest/login.html', form=form, error="Invalid email or password")
         # if user does not exist, flash error and redirect to login page
-        else:
+        if user is None:
             flash("The account does not exist.", category='error')
             return render_template('guest/login.html', form=form, error="The account does not exist.")
+        # check if password matches
+        if bcrypt.checkpw(form.password.data.encode('utf-8'), user.password.encode('utf-8')):
+            login_user(user)
+            flash("Logged in", category='success')
+            return redirect(url_for('user_views.dashboard', username=user.username))
+        # if password does not match, flash error and redirect to login page
+        flash("Incorrect Password", category='error')
+        return render_template('guest/login.html', form=form, error="Invalid email or password")
 
     return render_template('guest/login.html', form=form)
 
