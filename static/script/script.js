@@ -13,11 +13,12 @@ function greetTimeOfDay() {
     const date = new Date();
     const hour = date.getHours();
     let greeting = '';
-    // morning and evening only
     if (hour >= 0 && hour < 12) {
-        greeting = '☀️ Good day';
-    } else if (hour < 18) {
-        greeting = '🌙 Good evening';
+        greeting = 'Good Morning';
+    } else if (hour >= 12 && hour < 18) {
+        greeting = 'Good Afternoon';
+    } else {
+        greeting = 'Good Evening';
     }
     return greeting;
 }

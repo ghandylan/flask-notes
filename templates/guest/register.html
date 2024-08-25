@@ -9,28 +9,28 @@
 
             <!-- Username input -->
             <div class="form-outline mb-4">
-                {{ form.username(class="form-control", id="username") }}
                 {{ form.username.label(class="form-label", for="username") }}
+                {{ form.username(class="form-control", id="username") }}
             </div>
 
             <!-- Email input -->
             <div class="form-outline mb-4">
-                {{ form.email(class="form-control", id="email") }}
                 {{ form.email.label(class="form-label", for="email") }}
+                {{ form.email(class="form-control", id="email") }}
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-4">
+                {{ form.password.label(class="form-label", for="password") }}
                 {{ form.password(class="form-control", id="password",
                 spellcheck="false",autocomplete="new-password", autocorrect="off") }}
-                {{ form.password.label(class="form-label", for="password") }}
             </div>
 
             <!-- Pass confirmation input -->
             <div class="form-outline mb-4">
+                {{ form.confirm_password.label(class="form-label", for="confirm_password") }}
                 {{ form.confirm_password(class="form-control", id="confirm_password",
                 spellcheck="false",autocomplete="new-password", autocorrect="off") }}
-                {{ form.confirm_password.label(class="form-label", for="confirm_password") }}
             </div>
 
             <!-- Form validation err message -->
