@@ -1,12 +1,11 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_login import LoginManager
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect
 
+from blueprints import guest_bp, user_bp
 from config import Config
 from models import db
-
-from blueprints import guest_bp, user_bp
 
 
 def create_app():
@@ -27,6 +26,10 @@ def create_app():
 
     app.register_blueprint(guest_bp.guest_blueprint)
     app.register_blueprint(user_bp.user_blueprint)
+
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return render_template('404.html'), 404
 
     @login_manager.user_loader
     def load_user(user_id):
